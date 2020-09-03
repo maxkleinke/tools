@@ -1,4 +1,7 @@
 #!/bin/python3
+# ldap3 client to query the windows ldap service
+# Author: alwayslucky (@maxkleinke)
+
 import ldap3
 import traceback
 import getopt
