@@ -19,9 +19,9 @@ for username in ${usernames[*]}; do
         output=$(smbclient -U "$username%$password" //$1//IPC$ -c "")
 
         while [[ $output == *"NT_STATUS_IO_TIMEOUT"* ]]; do
-            output=$(smbclient -U "$username%$password" //$1//IPC$ -c "")
             echo "Connection timed out ..."
             sleep 5
+            output=$(smbclient -U "$username%$password" //$1//IPC$ -c "")
         done
         
         if [[ -z $output ]]; then

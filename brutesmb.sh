@@ -20,9 +20,9 @@ while read usr; do
         output=$(smbclient -U "$usr%$pwd" //$ip/$share -c '')
 
         while [[ $output == *"NT_STATUS_IO_TIMEOUT"* ]]; do
-            output=$(smbclient -U "$usr%$pwd" //$ip/$share -c '')
             echo "Connection timed out ..."
             sleep 3
+            output=$(smbclient -U "$usr%$pwd" //$ip/$share -c '')
         done
 
         if [[ $output == *"NT_STATUS_LOGON_FAILURE"* ]]; then
